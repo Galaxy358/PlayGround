@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080b11">
+<title>APEX — Formula Racing</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <header class="topbar"><div class="brand"><div class="brandmark">A</div><div><div class="brandname">APEX<span> / RACING</span></div><div class="brand-sub">FORMULA WORLD CHAMPIONSHIP</div></div></div><div class="top-right"><div class="season"><b>●</b> SEASON 2026 <span>·</span> ROUND <strong id="round">01</strong> / 25</div><div class="profile"><div class="avatar">DR</div><div><div class="profile-name">DRIVER</div><div class="profile-rank">ROOKIE CLASS</div></div></div></div></header>
+  <main>
+    <section class="intro"><div><div class="eyebrow"><span class="eyebrow-line"></span> THE WORLD TOUR <span class="year">2026</span></div><h1>Choose your <i>circuit.</i></h1><p class="intro-copy">Twenty-five legendary venues. One shot at the podium.</p></div><div class="race-status"><span class="live-dot"></span><span id="statusText">PIT LANE OPEN</span></div></section>
+    <section class="layout">
+      <div class="main-column">
+        <section class="track-card">
+          <div class="track-top"><div><div class="track-kicker"><span id="trackCountry">AUSTRALIA</span><span class="slash">/</span><span id="trackRound">ROUND 01</span></div><h2 id="trackName">Albert Park Grand Prix Circuit</h2><div class="track-meta"><span id="trackLocation">MELBOURNE, AUSTRALIA</span><span class="meta-divider"></span><span id="trackLength">5.278 KM</span><span class="meta-divider"></span><span id="trackTurns">14 TURNS</span></div></div>
+            <div class="track-picker"><label for="trackSelect">SELECT ROUND</label><select id="trackSelect" aria-label="Select a Formula racing circuit"></select><span class="select-chev">⌄</span></div>
+          </div>
+          <div class="map-wrap"><canvas id="gameCanvas" aria-label="Top-down playable Formula racing game"></canvas><div class="map-vignette"></div><div class="map-label start-label"><span class="start-icon">▸</span> START / FINISH</div><div class="map-label north-label">N <span>↑</span></div><div class="track-watermark">APEX <span>TRACK MAP</span></div><div class="countdown hidden" id="countdown">3</div><div class="finish-overlay hidden" id="finishOverlay"><span class="eyebrow">CHEQUERED FLAG</span><strong id="finishHeadline">PODIUM FINISH</strong><span id="finishSub">P1 · 03 LAPS</span><button id="againBtn" class="small-btn">RACE AGAIN <span>↻</span></button></div></div>
+          <div class="map-legend"><div><span class="legend-dot player-dot"></span> YOUR CAR <span class="legend-dot ai-dot"></span> RIVALS</div><div class="map-coords">TRACK MAP <span>·</span> LIVE POSITION</div></div>
+        </section>
+        <div class="controls-strip"><div class="control-title"><span class="keyboard-icon">⌨</span><span>RACE CONTROLS</span></div><div class="key-group"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>DRIVE</span></div><div class="key-group"><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd><span>OR ARROW KEYS</span></div><div class="key-group"><kbd>SHIFT</kbd><span>OVERTAKE</span></div><div class="key-group"><kbd>P</kbd><span>PAUSE</span></div></div>
+      </div>
+      <aside class="side-column">
+        <section class="race-card"><div class="card-head"><div><div class="panel-kicker">RACE WEEKEND</div><h3>Grand Prix</h3></div><span class="round-chip" id="roundChip">R01</span></div><div class="race-stats"><div class="stat"><span class="stat-label">RACE DISTANCE</span><strong>03 <small>LAPS</small></strong></div><div class="stat"><span class="stat-label">GRID SIZE</span><strong>08 <small>CARS</small></strong></div><div class="stat"><span class="stat-label">TRACK LENGTH</span><strong id="sideLength">5.278 <small>KM</small></strong></div><div class="stat"><span class="stat-label">CIRCUIT RECORD</span><strong class="record" id="trackRecord">1:20.260</strong></div></div><button id="startBtn" class="start-btn"><span class="flag-icon">▤</span><span id="startLabel">START RACE</span><span class="button-arrow">→</span></button><div class="race-note"><span>✦</span> <span>Finish in the top 3 to earn a podium.</span></div></section>
+        <section class="timing-card"><div class="timing-head"><div class="panel-kicker">LIVE TIMING</div><div class="timing-state"><span class="live-dot"></span><span id="timingState">STANDBY</span></div></div><div class="timing-row"><span class="position" id="position">P8</span><div class="timing-main"><span class="driver-line"><b>YOU</b><span class="you-tag">APX</span></span><span class="gap" id="playerGap">—</span></div><span class="lap-time" id="playerTime">—:—.———</span></div><div id="rivalRows"></div><div class="timing-foot"><span>CLASSIFIED</span><span id="classified">0 / 8</span></div></section>
+      </aside>
+    </section>
+    <section class="telemetry"><div class="telemetry-title"><span class="telemetry-dot"></span> DRIVER TELEMETRY <span class="telemetry-sub">LIVE DATA</span></div><div class="telemetry-item speed-item"><span class="tele-label">SPEED</span><div><strong id="speed">000</strong><small>KM/H</small></div><div class="speed-meter"><i id="speedMeter"></i></div></div><div class="telemetry-item gear-item"><span class="tele-label">GEAR</span><strong id="gear">N</strong></div><div class="telemetry-item lap-item"><span class="tele-label">LAP</span><div><strong id="lap">—</strong><small>/ 03</small></div></div><div class="telemetry-item time-item"><span class="tele-label">CURRENT LAP</span><strong id="currentTime">00:00.000</strong></div><div class="telemetry-item best-item"><span class="tele-label">BEST LAP</span><strong id="bestTime">—:—.———</strong></div><div class="ers-item"><div class="ers-head"><span>ERS DEPLOY</span><span id="ersPct">100%</span></div><div class="ers-meter"><i id="ersMeter"></i></div><span class="ers-hint">HOLD <kbd>SHIFT</kbd> TO DEPLOY</span></div></section>
+    <footer><span>APEX RACING <b>·</b> BUILT FOR THE GRID</span><span>25 CIRCUITS <b>·</b> 1 WORLD CHAMPION</span></footer>
+  </main>
+</div>
+<div class="touch-controls" aria-label="Touch driving controls"><button data-control="left" aria-label="Steer left">◀</button><button data-control="brake" aria-label="Brake">▼</button><button data-control="gas" aria-label="Accelerate">▲</button><button data-control="right" aria-label="Steer right">▶</button><button data-control="boost" aria-label="Overtake boost">⚡</button></div>
+<script src="tracks.js"></script><script src="game.js"></script>
+</body></html>
